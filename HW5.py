@@ -29,12 +29,22 @@ p = .9
 A = p*M+(1-p)*B
 #print(power_method_markov(A, np.ones(6), .00001))
 
+
 A = np.array([[1,0,.5,0],
               [0,1,0,.5],
               [0,0,.5,0],
               [0,0,0,.5]
               ])
-print(power_method_markov(A, np.ones(4), .0000000001))
+
+def steady_state(A, x0, i):
+    x = x0
+    for i in range(i):
+        x = A@x
+    return x
+
+print(steady_state(A, np.array([0.25,0.25,0.25,0.25]), 100))
+print(steady_state(A, np.array([.1,0,.4,.5]), 100))
+
 
 
 
